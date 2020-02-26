@@ -1,0 +1,11 @@
+FROM pschmitt/speedtest
+
+ADD entrypoint.sh /entrypoint.sh
+
+ENV INTERVAL=600
+
+VOLUME ["/data"]
+
+USER root
+
+ENTRYPOINT ["/entrypoint.sh"]
