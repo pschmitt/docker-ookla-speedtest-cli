@@ -6,6 +6,6 @@ chown -R speedtest /data
 
 while true
 do
-  su speedtest -c "speedtest -f json | tee /tmp/speedtest.json && mv /tmp/speedtest.json /data"
+  su speedtest -c "speedtest --accept-license --accept-gdpr -f json | tee /tmp/speedtest.json && mv /tmp/speedtest.json /data"
   sleep "$INTERVAL"
 done
