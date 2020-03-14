@@ -32,8 +32,8 @@ then
 
   case "$1" in
     cron)
-      DOCKERFILE="Dockerfile.cron"
-      TAG="${TAG:-cron}"
+      DOCKERFILE=Dockerfile.cron
+      TAG=cron
       shift
       ;;
     latest)
