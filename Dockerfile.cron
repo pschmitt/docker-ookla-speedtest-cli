@@ -1,11 +1,16 @@
 FROM pschmitt/speedtest
 
+ADD cron.sh /cron.sh
 ADD entrypoint.sh /entrypoint.sh
 
-ENV INTERVAL=600
+ENV INTERVAL=600 DATA_PATH=/data/speedtest.json HEALTHCHECK_TOLERANCE=3
 
 VOLUME ["/data"]
 
 USER root
+
+RUN apk add --no-cache jq
+
+HEALTHCHECK --start-period=5m CMD /cron.sh healthcheck
 
 ENTRYPOINT ["/entrypoint.sh"]
